@@ -26,10 +26,11 @@ module Almanack
       end
 
       def ical_calendar
-        events.each_with_object(Icalendar::Calendar.new) do |event, calendar|
-          calendar.x_wr_timezone = ENV['TZ']
+        ical = events.each_with_object(Icalendar::Calendar.new) do |event, calendar|
           calendar.add_event ical_event_for(event)
         end
+
+        ical.x_wr_timezone = ENV['TZ']
       end
 
       def ical_event_for(event)
