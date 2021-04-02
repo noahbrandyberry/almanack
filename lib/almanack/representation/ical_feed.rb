@@ -31,7 +31,7 @@ module Almanack
         end
 
         ical.timezone do |t|
-          ical.tzid = ENV['TZ']
+          t.tzid = ENV['TZ']
         end
         ical
       end
