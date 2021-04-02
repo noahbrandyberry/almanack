@@ -26,6 +26,7 @@ module Almanack
       end
 
       def ical_calendar
+        t.tzid = ENV['TZ']
         events.each_with_object(Icalendar::Calendar.new) do |event, calendar|
           calendar.add_event ical_event_for(event)
         end
