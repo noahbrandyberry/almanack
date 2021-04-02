@@ -31,6 +31,7 @@ module Almanack
         end
 
         ical.x_wr_timezone = ENV['TZ']
+        ical
       end
 
       def ical_event_for(event)
