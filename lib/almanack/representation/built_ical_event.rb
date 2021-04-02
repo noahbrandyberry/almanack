@@ -3,6 +3,8 @@ module Almanack
     class BuiltIcalEvent
       attr_reader :event
 
+      FORMAT = '%Y%m%dT%H%M%S'
+
       def initialize(event)
         @event = event
       end
@@ -32,19 +34,11 @@ module Almanack
       end
 
       def set_start_time
-        if event.start_time.is_a?(Icalendar::Values::Date)
-          ical_event.dtstart = event.start_time
-        else
-          ical_event.dtstart = event.start_time.utc
-        end
+        ical_event.dtstart = "#{event.start_time.strftime FORMAT}Z"
       end
 
       def set_end_time
-        if event.end_time.is_a?(Icalendar::Values::Date)
-          ical_event.dtend = event.end_time
-        else
-          ical_event.dtend = (event.end_time || event.start_time + default_event_duration ).utc
-        end
+        ical_event.dtend = "#{event.end_time.strftime FORMAT}Z"
       end
 
       def set_description
