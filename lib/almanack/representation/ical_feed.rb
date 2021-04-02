@@ -26,8 +26,8 @@ module Almanack
       end
 
       def ical_calendar
-        t.tzid = ENV['TZ']
         events.each_with_object(Icalendar::Calendar.new) do |event, calendar|
+          calendar.x_wr_timezone = ENV['TZ']
           calendar.add_event ical_event_for(event)
         end
       end
