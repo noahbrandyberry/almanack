@@ -30,7 +30,9 @@ module Almanack
           calendar.add_event ical_event_for(event)
         end
 
-        ical.tzid = ENV['TZ']
+        ical.timezone do |t|
+          ical.tzid = ENV['TZ']
+        end
         ical
       end
 
