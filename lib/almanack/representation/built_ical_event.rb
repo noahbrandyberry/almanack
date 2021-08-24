@@ -26,7 +26,12 @@ module Almanack
         set_end_time
         set_description
         set_location
+        set_uid
         ical_event
+      end
+
+      def set_uid
+        ical_event.uid = event.uid
       end
 
       def set_summary

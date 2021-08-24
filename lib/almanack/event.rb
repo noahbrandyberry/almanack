@@ -32,6 +32,10 @@ module Almanack
       self[:description]&.force_encoding('UTF-8')
     end
 
+    def uid
+      self[:uid]&.force_encoding('UTF-8')
+    end
+
     # Deprecated in favour of start_time
     def start_date
       deprecated :start_date, newer_method: :start_time
