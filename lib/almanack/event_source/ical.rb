@@ -52,7 +52,7 @@ module Almanack
           start_time: occurrence&.start_time || ical_event.dtstart,
           end_time: occurrence&.end_time || ical_event.dtend,
           description: ical_event.description,
-          location: ical_event.location
+          location: ical_event.location,
           uid: ical_event.uid
         )
       end
